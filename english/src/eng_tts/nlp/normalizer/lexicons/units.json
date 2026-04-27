@@ -1,0 +1,67 @@
+{
+  "kg": "kilograms",
+  "g": "grams",
+  "mg": "milligrams",
+  "lb": "pounds",
+  "lbs": "pounds",
+  "oz": "ounces",
+  "t": "tons",
+
+  "km": "kilometers",
+  "m": "meters",
+  "cm": "centimeters",
+  "mm": "millimeters",
+  "mi": "miles",
+  "ft": "feet",
+  "in": "inches",
+  "yd": "yards",
+
+  "L": "liters",
+  "ml": "milliliters",
+  "gal": "gallons",
+  "qt": "quarts",
+  "pt": "pints",
+
+  "h": "hours",
+  "hr": "hours",
+  "hrs": "hours",
+  "s": "seconds",
+  "sec": "seconds",
+  "ms": "milliseconds",
+
+  "Hz": "hertz",
+  "kHz": "kilohertz",
+  "MHz": "megahertz",
+  "GHz": "gigahertz",
+
+  "B": "bytes",
+  "KB": "kilobytes",
+  "MB": "megabytes",
+  "GB": "gigabytes",
+  "TB": "terabytes",
+  "Mbps": "megabits per second",
+  "Gbps": "gigabits per second",
+  "kbps": "kilobits per second",
+
+  "W": "watts",
+  "kW": "kilowatts",
+  "MW": "megawatts",
+  "V": "volts",
+  "A": "amperes",
+  "mAh": "milliamp hours",
+
+  "°C": "degrees celsius",
+  "°F": "degrees fahrenheit",
+  "K": "kelvin",
+
+  "km/h": "kilometers per hour",
+  "mph": "miles per hour",
+  "m/s": "meters per second",
+  "rpm": "revolutions per minute",
+
+  "%": "percent",
+
+  "px": "pixels",
+  "dpi": "dots per inch",
+  "fps": "frames per second"
+}

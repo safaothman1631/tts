@@ -1,0 +1,11 @@
+{
+  "_comment": "License manifest for voice reference clips. Add an entry per WAV file.",
+  "_schema": {
+    "filename": "must match a WAV file in this directory",
+    "license": "public_domain | cc_by | cc_0 | custom_owned",
+    "source": "URL or attribution string",
+    "duration_sec": "approximate clip length",
+    "transcript": "exact spoken transcript for ref_text"
+  },
+  "clips": []
+}

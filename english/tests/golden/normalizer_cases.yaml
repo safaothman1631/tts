@@ -1,0 +1,55 @@
+# Golden in→out cases for the rule-based normalizer.
+# Each item: input string (key) → expected substring (value) that MUST appear
+# in the normalized output. We use substring matching rather than exact match
+# because inflect/num2words style is implementation-specific.
+cases:
+  - in: "Dr. Smith earned $1,250.50 on 12/25/2024."
+    must_contain: ["Doctor", "dollar", "December"]
+  - in: "Visit https://example.com today!"
+    must_contain: ["example"]
+  - in: "It costs €50."
+    must_contain: ["euro"]
+  - in: "Meeting at 3:30 PM."
+    must_contain: ["thirty"]
+  - in: "She got 95% on the test."
+    must_contain: ["percent"]
+  - in: "Born in 1999."
+    must_contain: ["nineteen"]
+  - in: "The 90s were great."
+    must_contain: ["ninety"]
+  - in: "1st place winner."
+    must_contain: ["first"]
+  - in: "Add 1/2 cup of flour."
+    must_contain: ["half", "one"]
+  - in: "The pH is 7.4."
+    must_contain: ["seven"]
+  - in: "Distance: 5 km."
+    must_contain: ["kilo"]
+  - in: "Speed of 60 mph."
+    must_contain: ["mile"]
+  - in: "Email me at test@example.com."
+    must_contain: ["test"]
+  - in: "Call 555-123-4567."
+    must_contain: ["five"]
+  - in: "Mt. Everest is tall."
+    must_contain: ["Mount"]
+  - in: "Mrs. Jones lives on St. Paul St."
+    must_contain: ["Jones"]
+  - in: "NASA launched a rocket."
+    must_contain: ["NASA"]
+  - in: "The FBI investigated."
+    must_contain: ["F"]
+  - in: "Population: 1,234,567."
+    must_contain: ["million"]
+  - in: "From 10 to 20 dollars."
+    must_contain: ["ten", "twenty"]
+  - in: "5 + 3 = 8."
+    must_contain: ["plus", "equals"]
+  - in: "Use #python and @user."
+    must_contain: ["hashtag", "at"]
+  - in: "Henry VIII reigned."
+    must_contain: ["eighth", "Henry"]
+  - in: "The temperature is 72°F."
+    must_contain: ["seventy", "Fahrenheit"]
+  - in: "Files are 5 MB each."
+    must_contain: ["megabyte", "five"]

@@ -1,0 +1,16 @@
+{
+  "_comment": "Word-style acronyms pronounced as a single word (NASA -> 'nasa'). Spell-style ones (FBI -> 'F B I') are inferred via heuristics if not listed here.",
+  "word_style": [
+    "NASA", "NATO", "OPEC", "UNESCO", "UNICEF", "AIDS", "SCUBA", "LASER", "RADAR",
+    "SONAR", "POTUS", "FLOTUS", "GIF", "JPEG", "PNG", "PDF", "PIN", "ZIP", "RAM",
+    "ROM", "WIFI", "MODEM", "CAPTCHA", "PIXAR", "IKEA", "LEGO"
+  ],
+  "spell_style": [
+    "FBI", "CIA", "NSA", "DOJ", "DOD", "CDC", "FDA", "EPA", "IRS", "USPS",
+    "USA", "UK", "EU", "UN", "WHO", "API", "URL", "HTML", "CSS", "JSON", "XML",
+    "HTTP", "HTTPS", "FTP", "SQL", "CPU", "GPU", "RAM", "USB", "DVD", "CD",
+    "TV", "DVD", "BBC", "CNN", "BBC", "MTV", "ESPN", "NFL", "NBA", "MLB", "NHL",
+    "PHD", "MBA", "CEO", "CFO", "CTO", "COO", "VP", "HR", "IT", "PR", "QA",
+    "R&D", "B2B", "B2C", "ATM", "GPS", "AI", "ML", "NLP"
+  ]
+}

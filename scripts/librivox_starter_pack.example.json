@@ -1,0 +1,43 @@
+{
+  "_comment": "Starter pack template. Replace URLs with real PD/CC0 sources before running.",
+  "_instructions": [
+    "1. Browse https://librivox.org or https://archive.org for public-domain readings",
+    "   that match each archetype voice (clear single speaker, ~10s usable window).",
+    "2. Fill `url` with the direct .mp3/.ogg link from archive.org.",
+    "3. Pick `start` (seconds into the file) and `duration` (8-12 sec recommended).",
+    "4. Set license to PD for LibriVox (US public domain by policy).",
+    "5. Run: python scripts/bootstrap_reference_pack.py --config scripts/librivox_starter_pack.json"
+  ],
+  "clips": [
+    {
+      "codename": "Oracle",
+      "url": "https://archive.org/download/EXAMPLE_REPLACE_ME/file.mp3",
+      "start": 30.0,
+      "duration": 9.0,
+      "license": "PD",
+      "source_title": "TODO: title of the LibriVox reading",
+      "source_url": "https://librivox.org/TODO/",
+      "language": "en"
+    },
+    {
+      "codename": "Naturalist",
+      "url": "https://archive.org/download/EXAMPLE_REPLACE_ME/file.mp3",
+      "start": 60.0,
+      "duration": 10.0,
+      "license": "PD",
+      "source_title": "TODO",
+      "source_url": "https://librivox.org/TODO/",
+      "language": "en"
+    },
+    {
+      "codename": "Scholar",
+      "url": "https://archive.org/download/EXAMPLE_REPLACE_ME/file.mp3",
+      "start": 45.0,
+      "duration": 10.0,
+      "license": "PD",
+      "source_title": "TODO",
+      "source_url": "https://librivox.org/TODO/",
+      "language": "en"
+    }
+  ]
+}

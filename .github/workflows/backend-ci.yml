@@ -1,0 +1,39 @@
+name: backend-ci
+
+on:
+  push:
+    paths:
+      - 'english/**'
+      - 'docs/**'
+      - '.github/workflows/backend-ci.yml'
+  pull_request:
+    paths:
+      - 'english/**'
+      - 'docs/**'
+      - '.github/workflows/backend-ci.yml'
+
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: english
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: english/pyproject.toml
+
+      - name: Install system audio dependencies
+        run: sudo apt-get update && sudo apt-get install -y libsndfile1
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[api,dev]"
+
+      - name: Run tests
+        run: python -m pytest tests

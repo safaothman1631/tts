@@ -1,0 +1,30 @@
+# Single-origin reverse proxy for TTS Studio
+# Static UI + /api -> FastAPI engine, /ws -> WebSocket
+:80 {
+    encode zstd gzip
+
+    # API REST
+    handle_path /api/* {
+        reverse_proxy {$API_UPSTREAM:tts-engine:8000}
+    }
+
+    # WebSocket streaming
+    handle /ws/* {
+        reverse_proxy {$API_UPSTREAM:tts-engine:8000}
+    }
+
+    # Static SPA with HTML5 history fallback
+    handle {
+        root * /srv
+        try_files {path} /index.html
+        file_server
+    }
+
+    header {
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Strict-Transport-Security "max-age=31536000"
+        Permissions-Policy "microphone=(self)"
+    }
+}

@@ -1,0 +1,417 @@
+# Kurdish & English TTS Dataset - 400 Sentences
+# Dataset بۆ فێرکردنی مۆدێلی TTS کوردی و ئینگلیزی
+
+# ═══════════════════════════════════════════════════════════════
+# ENGLISH SENTENCES / ڕستەکانی ئینگلیزی (1-200)
+# ═══════════════════════════════════════════════════════════════
+
+# Greetings / ڕێزکردن (1-30)
+Hello, how are you?
+Good morning.
+Good afternoon.
+Good evening.
+Good night.
+Thank you very much.
+You're welcome.
+Goodbye.
+See you later.
+Nice to meet you.
+How is your day going?
+I hope you are well.
+Have a great day.
+Take care of yourself.
+It was nice talking to you.
+Please come in.
+Make yourself at home.
+Welcome to our house.
+I'm glad to see you.
+Long time no see.
+How have you been?
+What's new with you?
+Everything is fine.
+I'm doing great.
+That's wonderful news.
+I appreciate your help.
+Thank you for coming.
+It's my pleasure.
+Don't mention it.
+Anytime you need help.
+
+# Daily Life / ژیانی ڕۆژانە (31-70)
+I wake up early every morning.
+I brush my teeth after breakfast.
+I take a shower before work.
+I eat breakfast with my family.
+I drive to work every day.
+I work in an office downtown.
+I have lunch at noon.
+I finish work at five o'clock.
+I cook dinner for my family.
+I watch television in the evening.
+I read books before sleeping.
+I go to bed at ten o'clock.
+Today is a beautiful day.
+The weather is very nice.
+It's raining outside.
+The sun is shining brightly.
+I need to go shopping.
+I'm going to the market.
+I bought some fresh vegetables.
+The food tastes delicious.
+I'm learning a new language.
+Practice makes perfect.
+I exercise every morning.
+Health is the most important thing.
+I drink eight glasses of water daily.
+Sleep is essential for health.
+I walk for thirty minutes every day.
+Fresh air is good for you.
+I feel very energetic today.
+Life is beautiful.
+I love spending time with family.
+My children are growing fast.
+Time flies so quickly.
+Memories are precious treasures.
+Family is everything to me.
+Home is where the heart is.
+I miss my hometown.
+Childhood memories are sweet.
+Friends are like family.
+Love makes the world go round.
+
+# Emotions & Feelings / هەستەکان (71-110)
+I am very happy today.
+I feel sad sometimes.
+I am excited about tomorrow.
+I feel tired after work.
+I am hungry right now.
+I am thirsty.
+I feel cold in winter.
+I feel hot in summer.
+I am proud of my achievements.
+I am grateful for everything.
+I feel confident today.
+I am worried about the future.
+I feel peaceful and calm.
+I am hopeful for better days.
+I feel strong and healthy.
+I am surprised by the news.
+I feel comfortable here.
+I am curious about many things.
+I feel inspired to create.
+I am determined to succeed.
+Happiness comes from within.
+Sadness is temporary.
+Fear is just an emotion.
+Courage overcomes fear.
+Love heals all wounds.
+Hope never dies.
+Faith moves mountains.
+Patience is a virtue.
+Kindness costs nothing.
+Gratitude changes everything.
+Believe in yourself.
+Never give up on your dreams.
+Every day is a new beginning.
+The best is yet to come.
+Stay positive always.
+You are stronger than you think.
+Everything happens for a reason.
+Trust the process.
+Good things take time.
+Tomorrow will be better.
+
+# Nature & Environment / سروشت (111-150)
+The mountains are very high.
+The river flows to the sea.
+The forest is full of trees.
+Birds sing in the morning.
+Flowers bloom in spring.
+Leaves fall in autumn.
+Snow covers the ground in winter.
+The ocean is deep and blue.
+Stars shine at night.
+The moon is bright tonight.
+Clouds float in the sky.
+Rain brings life to earth.
+The sun rises in the east.
+The sun sets in the west.
+Nature is beautiful everywhere.
+Animals live in the wild.
+Fish swim in the water.
+Butterflies are colorful.
+Bees make honey.
+Trees give us oxygen.
+We must protect our environment.
+Clean water is essential.
+Fresh air is a blessing.
+Gardens need care and attention.
+Plants grow with sunlight.
+Seasons change every year.
+Winter is the coldest season.
+Summer is warm and sunny.
+Spring brings new life.
+Autumn leaves are colorful.
+The sky is clear today.
+A rainbow appears after rain.
+Thunder sounds so loud.
+Lightning strikes quickly.
+Wind blows through the trees.
+Waves crash on the shore.
+Desert sand is very hot.
+Mountains touch the clouds.
+Valleys are green and fertile.
+Rivers connect the land.
+
+# Education & Learning / خوێندن و فێربوون (151-200)
+Education is the key to success.
+I love learning new things.
+Knowledge is power.
+Reading opens your mind.
+Writing helps you think clearly.
+Mathematics is important.
+Science explains the world.
+History teaches us lessons.
+Language connects people.
+Art expresses emotions.
+Music touches the soul.
+Teachers inspire students.
+Students learn every day.
+Schools are places of learning.
+Libraries have many books.
+Computers help us learn.
+The internet has much information.
+Study hard for your exams.
+Practice improves your skills.
+Never stop learning.
+Ask questions when confused.
+Listen carefully to understand.
+Think before you speak.
+Learn from your mistakes.
+Experience is the best teacher.
+Books are our best friends.
+Reading is a good habit.
+Write down your thoughts.
+Share what you know.
+Help others learn too.
+Education changes lives.
+Literacy is fundamental.
+Critical thinking is important.
+Creativity solves problems.
+Innovation drives progress.
+Research finds answers.
+Curiosity leads to discovery.
+Learning is a lifelong journey.
+Every expert was once a beginner.
+Knowledge grows when shared.
+
+# ═══════════════════════════════════════════════════════════════
+# KURDISH SENTENCES / ڕستەکانی کوردی (201-400)
+# ═══════════════════════════════════════════════════════════════
+
+# ڕستەکانی سادە / Simple Sentences (1-50)
+سڵاو چۆنیت؟
+بەیانی باش.
+ئێوارەتان باش.
+شەوتان خۆش.
+ڕۆژت خۆش بێت.
+زۆر سوپاس.
+خواحافیز.
+ببورە.
+تکایە.
+باشە.
+نەخێر.
+بەڵێ.
+من باشم.
+تۆ چۆنیت؟
+ئێمە خۆشحاڵین.
+ئەوان هاتوون.
+من دەڕۆم.
+تۆ دێیت؟
+ئەو لێرەیە.
+ئێمە ئامادەین.
+من ناوم ئارمانجە.
+تۆ ناوت چییە؟
+من لە کوردستانم.
+تۆ لە کوێیت؟
+ئەو زۆر باشە.
+من فێردەبم.
+تۆ کاردەکەیت؟
+ئێمە دەخوێنینەوە.
+ئەوان دەنووسن.
+من حەزدەکەم.
+تۆ دەزانیت؟
+ئەو دەڵێت.
+ئێمە دەبینین.
+من گوێ دەگرم.
+تۆ تێدەگەیت؟
+من بیرم دەکەوێتەوە.
+تۆ هەستدەکەیت؟
+ئەو دەڵێ راست بووە.
+من باوەڕدەکەم.
+تۆ هیوادار بە؟
+من بەدەنگەوە دەخوێنمەوە.
+تۆ گۆرانی دەڵێیت؟
+ئەو بە باشی قسەدەکات.
+من بە کوردی دەدوێم.
+تۆ بە عەرەبی دەزانیت؟
+من بە ئینگلیزی فێردەبم.
+تۆ بە فارسی دەخوێنیتەوە؟
+ئەو بە ئاسانی تێدەگات.
+من پرسیارم هەیە.
+تۆ وەڵامت دەزانێت؟
+
+# خێزان و دۆست / Family & Friends (51-100)
+دایکم مەهربانە.
+باوکم کاردەکات.
+برام لە قوتابخانەیە.
+خوشکم گەنجە.
+دایکباباوکم لە گوندن.
+منداڵەکان یاری دەکەن.
+برازام هاتووە.
+خوشکزام خۆشە.
+خاڵم بە دڵنیام.
+مامم شادە.
+هاوڕێیەکانم باشن.
+دۆستم هەیە.
+دراوسێیەکانمان نرمن.
+نزیکانەمان دێن.
+کەسوکارم زۆرە.
+خێزانم گەورەیە.
+باوکم کاردەکات.
+دایکم چێشت دەنێت.
+برام فێردەبێت.
+خوشکم دەنووسێت.
+کوڕەکەم بچووکە.
+کچەکەم جوانە.
+مناڵەکان شادن.
+گەنجەکان قسەدەکەن.
+پیاوەکان کاردەکەن.
+ژنەکان دەخوێننەوە.
+پیرانەمان دانیشتوون.
+مێردم هاتووە.
+ژنم چووە.
+کوڕم گەڕاوەتەوە.
+کچم ماوەتەوە.
+براکەم خەوتووە.
+خوشکەکەم هەستاوە.
+دایە گیانەکەم سەرقاڵە.
+باوکە گیانەکەم بەخت دارە.
+خێزانەکەم خۆشحاڵە.
+ماڵەکەمان گەورەیە.
+ژوورەکەمان ڕوونە.
+ماڵمان گەرمە.
+شوێنەکەمان خۆشە.
+دەرگاکەمان کراوەیە.
+پەنجەرەکەمان بەرزە.
+باخچەکەمان سەوزە.
+گوڵەکانمان بۆندارن.
+دارەکانمان بەرزن.
+ئاوەکەمان خاوێنە.
+خواردنەکەمان تامدارە.
+نانەکەمان گەرمە.
+چایەکەمان تاتڵە.
+میوەکەمان بەهێزە.
+
+# سروشت و کاتوساعات / Nature & Time (101-150)
+ڕۆژ هەڵدێت.
+خۆر تاوە.
+هەتاو گەرمە.
+هەور دەباتەوە.
+باران دەبارێت.
+بەفر دەباتەوە.
+با هەڵدەکات.
+هەوا سارە.
+زستان سارەترە.
+بەهار خۆشە.
+هاوین گەرمە.
+پایز سەوزە.
+چیا بەرزە.
+دەشت فراوانە.
+ڕووبار دەڕوات.
+ئاو خاوێنە.
+دار سەوزە.
+گوڵ بۆن دەدات.
+گیا دەڕوێت.
+کێو بەرزە.
+بەردە قایمە.
+خاک قوڕە.
+ئاسمان شینە.
+هەسار سپییە.
+ئەستێرە دەدرەوشێتەوە.
+مانگ ڕوونە.
+خۆر دەچێتە خوارەوە.
+شەو دێت.
+تاریکی هاتووە.
+ڕووناکی ڕۆیشتووە.
+بەیانی هاتووە.
+سەرلەبەیانییە.
+نیوەڕۆیە.
+دواینیوەڕۆیە.
+ئێوارەیە.
+نیوەشەوە.
+کاتژمێر چەندە؟
+کاتژمێرێک تێپەڕیوە.
+دەقیقەیەک ماوە.
+چرکەیەک بوەستە.
+ساتێک چاوەڕێبکە.
+دەمێک ماوەتەوە.
+هەفتەیەک بووە.
+مانگێک ڕۆیشتووە.
+ساڵێک تێپەڕیوە.
+دوێنێ بوو.
+ئەمڕۆیە.
+سبەی دێت.
+پارێزەر دوا بووە.
+
+# هەستەکان و سیفەتەکان / Feelings & Adjectives (151-200)
+من خۆشحاڵم.
+تۆ شادی.
+ئەو بە دڵنیایە.
+من خەمبارم.
+تۆ گرانیت؟
+من دڵتەنگم.
+تۆ بێزاریت؟
+من بەهێزم.
+تۆ لاوازیت؟
+من باوەڕدارم.
+من ترسم هەیە.
+من دڵ قەویەم.
+من هیوادارم.
+من ماندووم.
+من وشکم.
+من برسیم.
+من تینووم.
+من سەرما بووم.
+من گەرمام.
+من نەخۆشم.
+من چاکم.
+من بەهێزم.
+من لاوازم.
+من گەنجم.
+من پیرم.
+من بچووکم.
+من گەورەم.
+من بەرزم.
+من نزمم.
+من قەڵەوم.
+من باریکم.
+من جوانم.
+من زیرەکم.
+من گێلم.
+من خێرام.
+من هێوام.
+من باشم.
+من خراپم.
+من ڕاستم.
+من درۆم.
+من کریمم.
+من بەخیلم.
+من مەهربانم.
+من توندم.
+من نەرمم.
+من قورسم.
+من سەختم.
+من ئاسانم.
+من سەیرم.
+من ئاساییم.

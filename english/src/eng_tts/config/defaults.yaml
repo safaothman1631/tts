@@ -1,0 +1,49 @@
+# Default eng-tts pipeline configuration
+pipeline:
+  ssml_parser: lxml
+  normalizer: rule_based
+  segmenter: pysbd
+  linguistic: spacy
+  homograph: rule_based
+  g2p: hybrid
+  prosody: rule_based
+  sentiment: vader
+  frame_builder: default
+  acoustic: piper         # lightweight neural ONNX backend (offline-capable)
+  vocoder: builtin        # most acoustic backends bundle vocoder
+  postproc:
+    - loudness
+    - resample
+
+normalizer:
+  expand_acronyms: true
+  expand_currencies: true
+  expand_dates: true
+  expand_phones: true
+  expand_urls: true
+  expand_emojis: false
+
+g2p:
+  prefer_lexicon: true
+  neural_fallback: true
+  output_format: arpabet  # arpabet | ipa
+
+prosody:
+  default_break_ms:
+    period: 400
+    question: 350
+    exclamation: 350
+    comma: 150
+    semicolon: 250
+    colon: 250
+    dash: 200
+    ellipsis: 500
+
+acoustic:
+  tier: piper             # qwen3 | piper | fast | premium | clone | legacy
+  models:
+    qwen3: Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice
+    piper: en_US-lessac-medium
+    fast: tts_models/en/ljspeech/vits
+    premium: tts_models/en/ljspeech/vits--neon
+    clone: tts_models/multilingual/multi-dataset/xtts_v2

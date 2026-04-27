@@ -1,0 +1,137 @@
+{
+  "_doc": "Each entry maps a homograph to {pos_tag: ARPABET pronunciation}. Defaults under '*'.",
+  "lead": {
+    "VERB": "L IY1 D",
+    "NOUN": "L EH1 D",
+    "*": "L IY1 D"
+  },
+  "read": {
+    "VBD": "R EH1 D",
+    "VBN": "R EH1 D",
+    "*": "R IY1 D"
+  },
+  "bass": {
+    "music": "B EY1 S",
+    "*": "B AE1 S"
+  },
+  "tear": {
+    "VERB": "T EH1 R",
+    "NOUN": "T IH1 R",
+    "*": "T IH1 R"
+  },
+  "wind": {
+    "VERB": "W AY1 N D",
+    "NOUN": "W IH1 N D",
+    "*": "W IH1 N D"
+  },
+  "bow": {
+    "VERB": "B AW1",
+    "NOUN_archery": "B OW1",
+    "*": "B OW1"
+  },
+  "close": {
+    "VERB": "K L OW1 Z",
+    "ADJ": "K L OW1 S",
+    "*": "K L OW1 S"
+  },
+  "desert": {
+    "VERB": "D IH0 Z ER1 T",
+    "NOUN": "D EH1 Z ER0 T",
+    "*": "D EH1 Z ER0 T"
+  },
+  "minute": {
+    "ADJ": "M AY0 N UW1 T",
+    "NOUN": "M IH1 N AH0 T",
+    "*": "M IH1 N AH0 T"
+  },
+  "object": {
+    "VERB": "AH0 B JH EH1 K T",
+    "NOUN": "AA1 B JH EH0 K T",
+    "*": "AA1 B JH EH0 K T"
+  },
+  "present": {
+    "VERB": "P R IY0 Z EH1 N T",
+    "NOUN": "P R EH1 Z AH0 N T",
+    "ADJ": "P R EH1 Z AH0 N T",
+    "*": "P R EH1 Z AH0 N T"
+  },
+  "record": {
+    "VERB": "R IH0 K AO1 R D",
+    "NOUN": "R EH1 K ER0 D",
+    "*": "R EH1 K ER0 D"
+  },
+  "refuse": {
+    "VERB": "R IH0 F Y UW1 Z",
+    "NOUN": "R EH1 F Y UW0 S",
+    "*": "R IH0 F Y UW1 Z"
+  },
+  "produce": {
+    "VERB": "P R AH0 D UW1 S",
+    "NOUN": "P R OW1 D UW0 S",
+    "*": "P R AH0 D UW1 S"
+  },
+  "permit": {
+    "VERB": "P ER0 M IH1 T",
+    "NOUN": "P ER1 M IH0 T",
+    "*": "P ER0 M IH1 T"
+  },
+  "subject": {
+    "VERB": "S AH0 B JH EH1 K T",
+    "NOUN": "S AH1 B JH IH0 K T",
+    "*": "S AH1 B JH IH0 K T"
+  },
+  "address": {
+    "VERB": "AH0 D R EH1 S",
+    "NOUN": "AE1 D R EH0 S",
+    "*": "AH0 D R EH1 S"
+  },
+  "contract": {
+    "VERB": "K AH0 N T R AE1 K T",
+    "NOUN": "K AA1 N T R AE0 K T",
+    "*": "K AA1 N T R AE0 K T"
+  },
+  "conduct": {
+    "VERB": "K AH0 N D AH1 K T",
+    "NOUN": "K AA1 N D AH0 K T",
+    "*": "K AA1 N D AH0 K T"
+  },
+  "convict": {
+    "VERB": "K AH0 N V IH1 K T",
+    "NOUN": "K AA1 N V IH0 K T",
+    "*": "K AA1 N V IH0 K T"
+  },
+  "console": {
+    "VERB": "K AH0 N S OW1 L",
+    "NOUN": "K AA1 N S OW0 L",
+    "*": "K AA1 N S OW0 L"
+  },
+  "polish": {
+    "PROPN": "P OW1 L IH0 SH",
+    "*": "P AA1 L IH0 SH"
+  },
+  "live": {
+    "VERB": "L IH1 V",
+    "ADJ": "L AY1 V",
+    "*": "L IH1 V"
+  },
+  "use": {
+    "VERB": "Y UW1 Z",
+    "NOUN": "Y UW1 S",
+    "*": "Y UW1 Z"
+  },
+  "house": {
+    "VERB": "HH AW1 Z",
+    "NOUN": "HH AW1 S",
+    "*": "HH AW1 S"
+  },
+  "abuse": {
+    "VERB": "AH0 B Y UW1 Z",
+    "NOUN": "AH0 B Y UW1 S",
+    "*": "AH0 B Y UW1 S"
+  },
+  "excuse": {
+    "VERB": "IH0 K S K Y UW1 Z",
+    "NOUN": "IH0 K S K Y UW1 S",
+    "*": "IH0 K S K Y UW1 S"
+  }
+}

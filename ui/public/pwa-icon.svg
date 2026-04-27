@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="TTS Studio icon">
+  <rect width="512" height="512" rx="96" fill="#0a0a0a"/>
+  <path d="M128 322V190h44l56 86 56-86h44v132h-42v-70l-42 64h-32l-42-64v70h-42Z" fill="#f8fafc"/>
+  <path d="M358 170c24 18 42 49 42 86s-18 68-42 86" fill="none" stroke="#22d3ee" stroke-width="28" stroke-linecap="round"/>
+  <path d="M386 126c45 32 74 78 74 130s-29 98-74 130" fill="none" stroke="#a78bfa" stroke-width="24" stroke-linecap="round" opacity=".95"/>
+</svg>

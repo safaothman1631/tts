@@ -1,0 +1,57 @@
+# Built-in voice catalogue
+voices:
+  - id: qwen3_en_default
+    name: "Qwen3 TTS (0.6B)"
+    gender: any
+    accent: en-US
+    backend: qwen3
+    model: Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice
+    speaker_id: Ryan
+
+  - id: piper_en_us_lessac_medium
+    name: "Piper Lessac (US, Medium)"
+    gender: female
+    accent: en-US
+    backend: piper
+    model: en_US-lessac-medium
+    speaker_id: null
+
+  - id: en_us_neutral_f
+    name: "Neutral US Female"
+    gender: female
+    accent: en-US
+    backend: vits
+    model: tts_models/en/ljspeech/vits
+    speaker_id: null
+
+  - id: en_us_neutral_m
+    name: "Neutral US Male"
+    gender: male
+    accent: en-US
+    backend: vits
+    model: tts_models/en/vctk/vits
+    speaker_id: p226
+
+  - id: en_us_warm_f
+    name: "Warm US Female"
+    gender: female
+    accent: en-US
+    backend: vits
+    model: tts_models/en/vctk/vits
+    speaker_id: p225
+
+  - id: en_uk_brit_m
+    name: "British Male"
+    gender: male
+    accent: en-GB
+    backend: vits
+    model: tts_models/en/vctk/vits
+    speaker_id: p245
+
+  - id: legacy_pyttsx3
+    name: "Legacy pyttsx3 (offline)"
+    gender: any
+    accent: en-US
+    backend: legacy
+    model: pyttsx3
+    speaker_id: null

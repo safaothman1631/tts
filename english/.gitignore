@@ -1,0 +1,54 @@
+# Models / checkpoints
+models/
+*.pth
+*.ckpt
+*.bin
+*.onnx
+*.safetensors
+
+# Audio output
+output/*.wav
+output/*.mp3
+output/*.flac
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+
+# Test/coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Env
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data
+data/test_sets/*.wav
+data/benchmarks/results/
+
+# Cache
+.cache/
+*.cache

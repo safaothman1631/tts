@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Output files
+output/
+*.mp3
+*.wav
+*_metadata.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NLTK data
+nltk_data/
+
+# ML models / caches (large, redownloadable)
+models/
+.cache/
+**/.cache/
+*.onnx
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Local scratch / debug artefacts
+body*.json
+test_*.wav
+*_v3.wav
+
+# Node / UI build
+node_modules/
+ui/dist/
+ui/dist-tsbuild-node/
+ui/test-results/
+ui/playwright-report/
+
+# Env / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Python pytest cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

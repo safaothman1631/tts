@@ -1,0 +1,7 @@
+nltk
+pyttsx3
+gTTS
+textblob
+langdetect
+num2words
+inflect

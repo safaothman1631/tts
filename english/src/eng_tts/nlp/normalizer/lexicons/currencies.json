@@ -1,0 +1,14 @@
+{
+  "$": {"name": "dollar", "plural": "dollars", "subunit": "cent", "subunit_plural": "cents", "code": "USD"},
+  "USD": {"name": "dollar", "plural": "dollars", "subunit": "cent", "subunit_plural": "cents"},
+  "€": {"name": "euro", "plural": "euros", "subunit": "cent", "subunit_plural": "cents", "code": "EUR"},
+  "EUR": {"name": "euro", "plural": "euros", "subunit": "cent", "subunit_plural": "cents"},
+  "£": {"name": "pound", "plural": "pounds", "subunit": "penny", "subunit_plural": "pence", "code": "GBP"},
+  "GBP": {"name": "pound", "plural": "pounds", "subunit": "penny", "subunit_plural": "pence"},
+  "¥": {"name": "yen", "plural": "yen", "subunit": "sen", "subunit_plural": "sen", "code": "JPY"},
+  "JPY": {"name": "yen", "plural": "yen"},
+  "₹": {"name": "rupee", "plural": "rupees", "subunit": "paisa", "subunit_plural": "paise", "code": "INR"},
+  "₩": {"name": "won", "plural": "won", "code": "KRW"},
+  "₽": {"name": "ruble", "plural": "rubles", "subunit": "kopek", "subunit_plural": "kopeks", "code": "RUB"},
+  "¢": {"name": "cent", "plural": "cents"}
+}
