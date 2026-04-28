@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { HelpHint } from '@/components/common/HelpHint';
 import { Copy, Loader2, ScanText } from 'lucide-react';
 import { toast } from 'sonner';
+import { SampleTextPicker } from '@/components/common/SampleTextPicker';
 
 export function AnalyzerPage() {
   const [text, setText] = useState('Hello world. This is a test of the text-to-speech analyzer.');
@@ -34,6 +35,7 @@ export function AnalyzerPage() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
+          <SampleTextPicker onPick={(s) => setText(s.text)} disabled={isLoading} />
           <Textarea
             value={text}
             onChange={(e) => setText(e.target.value)}

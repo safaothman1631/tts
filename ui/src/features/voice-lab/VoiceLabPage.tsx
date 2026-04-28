@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Mic, Square, Check, ChevronRight, ChevronLeft, AlertTriangle, Loader2, Play, Pause } from 'lucide-react';
+import { Mic, Square, Check, ChevronRight, ChevronLeft, AlertTriangle, Loader2, Play, Pause, Upload } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,6 +11,7 @@ import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from '@/components/ui/select';
 import { HelpHint } from '@/components/common/HelpHint';
+import { SampleTextPicker } from '@/components/common/SampleTextPicker';
 import { cn, formatDuration } from '@/lib/utils';
 import { toast } from 'sonner';
 import { cloneVoice, deleteVoice, synthesize } from '@/api/endpoints';
@@ -196,6 +197,69 @@ export function VoiceLabPage() {
     setRecording(false);
   };
 
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const onPickFile = () => {
+    fileInputRef.current?.click();
+  };
+
+  const onFileChosen = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    // Always reset the input so picking the same file twice still fires onChange.
+    event.target.value = '';
+    if (!file) return;
+
+    // Hard validation: type + size (cap at 50 MB to avoid UI lockups).
+    if (!file.type.startsWith('audio/') && !/\.(wav|mp3|m4a|ogg|flac|webm)$/i.test(file.name)) {
+      toast.error('Please choose an audio file (wav, mp3, m4a, ogg, flac, webm).');
+      return;
+    }
+    const MAX_BYTES = 50 * 1024 * 1024;
+    if (file.size > MAX_BYTES) {
+      toast.error('File is larger than 50 MB. Please trim it first.');
+      return;
+    }
+
+    // Stop any active recording before swapping in the upload.
+    if (recording) stop();
+
+    if (audioUrl) URL.revokeObjectURL(audioUrl);
+    const url = URL.createObjectURL(file);
+    setAudioBlob(file);
+    setAudioUrl(url);
+
+    // Best-effort duration probe via a transient <audio> element.
+    try {
+      const probe = document.createElement('audio');
+      probe.preload = 'metadata';
+      probe.src = url;
+      const dur = await new Promise<number>((resolve, reject) => {
+        const cleanup = () => {
+          probe.removeEventListener('loadedmetadata', onMeta);
+          probe.removeEventListener('error', onErr);
+        };
+        const onMeta = () => {
+          cleanup();
+          resolve(Number.isFinite(probe.duration) ? probe.duration : 0);
+        };
+        const onErr = () => {
+          cleanup();
+          reject(new Error('decode-failed'));
+        };
+        probe.addEventListener('loadedmetadata', onMeta);
+        probe.addEventListener('error', onErr);
+      });
+      setDuration(dur);
+      if (dur > 0 && dur < 5) {
+        toast.warning(`Sample is only ${dur.toFixed(1)}s. 30+ seconds gives much better cloning quality.`);
+      }
+    } catch {
+      // Some containers (e.g. raw webm) don't expose duration; leave 0 and let user proceed.
+      setDuration(0);
+    }
+    toast.success(`Loaded ${file.name}`);
+  };
+
   const next = () => {
     if (step === 'intro' && !consent) {
       toast.error('Please accept the consent.');
@@ -277,6 +341,14 @@ export function VoiceLabPage() {
 
           {step === 'record' && (
             <div className="flex flex-col items-center gap-4 py-6">
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="audio/*,.wav,.mp3,.m4a,.ogg,.flac,.webm"
+                className="hidden"
+                onChange={onFileChosen}
+                aria-label="Upload audio sample"
+              />
               <Button
                 size="xl"
                 variant={recording ? 'destructive' : 'gradient'}
@@ -285,8 +357,24 @@ export function VoiceLabPage() {
               >
                 {recording ? <Square className="h-8 w-8" /> : <Mic className="h-8 w-8" />}
               </Button>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span className="h-px w-8 bg-border" /> or <span className="h-px w-8 bg-border" />
+              </div>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={onPickFile}
+                disabled={recording}
+              >
+                <Upload className="h-4 w-4" /> Upload audio file
+              </Button>
               <div className="text-sm text-muted-foreground">
-                {recording ? 'Recording…' : audioBlob ? `Recorded ${formatDuration(duration)}` : 'Record at least 30 seconds.'}
+                {recording
+                  ? 'Recording…'
+                  : audioBlob
+                    ? `Loaded ${duration > 0 ? formatDuration(duration) : '(unknown duration)'}`
+                    : 'Record at least 30 seconds, or upload a clean audio file (WAV/MP3/M4A/OGG/FLAC).'}
               </div>
               {audioUrl && !recording && (
                 <audio controls controlsList="nodownload noremoteplayback" src={audioUrl} className="w-full" />
@@ -339,6 +427,7 @@ export function VoiceLabPage() {
                   Reference transcript (optional)
                   <HelpHint text="Exact text spoken in the reference recording. Improves clone quality on Qwen3 by aligning audio with text." />
                 </Label>
+                <SampleTextPicker onPick={(s) => setReferenceText(s.text)} compact />
                 <Textarea
                   id="vref"
                   value={referenceText}
@@ -374,6 +463,11 @@ export function VoiceLabPage() {
                       Test phrase
                       <HelpHint text="Synthesize a sentence with the new voice to verify quality before using it in Studio." />
                     </Label>
+                    <SampleTextPicker
+                      onPick={(s) => setTestText(s.text)}
+                      disabled={testSynthesizing}
+                      compact
+                    />
                     <Textarea
                       id="vtest"
                       value={testText}

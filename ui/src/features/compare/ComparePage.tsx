@@ -14,6 +14,7 @@ import { synthesize } from '@/api/endpoints';
 import { isBackendReady } from '@/lib/backend-status';
 import { BackendStatusNotice } from '@/components/common/BackendStatusNotice';
 import { LicenseBadge } from '@/features/characters/LicenseBadge';
+import { SampleTextPicker } from '@/components/common/SampleTextPicker';
 
 const DEFAULT_TEXT =
   'The quick brown fox jumps over the lazy dog. I will tell you a story you have never heard before.';
@@ -31,7 +32,7 @@ export function ComparePage() {
   const health = useHealthQuery();
   const backendReady = isBackendReady(health.data?.status);
   const { data } = useVoiceCharactersQuery({ limit: 200 }, backendReady);
-  const allVoices = data?.items ?? [];
+  const allVoices = useMemo(() => data?.items ?? [], [data]);
   const voiceById = useMemo(() => Object.fromEntries(allVoices.map((v) => [v.id, v])), [allVoices]);
 
   const [text, setText] = useState(DEFAULT_TEXT);
@@ -92,7 +93,6 @@ export function ComparePage() {
   const renderAll = async () => {
     for (let i = 0; i < slots.length; i++) {
       // sequential so the GPU is not flooded
-      // eslint-disable-next-line no-await-in-loop
       await renderSlot(i);
     }
   };
@@ -115,6 +115,7 @@ export function ComparePage() {
 
       <Card>
         <CardContent className="space-y-3 p-4">
+          <SampleTextPicker onPick={(s) => setText(s.text)} />
           <Textarea
             value={text}
             onChange={(e) => setText(e.target.value)}

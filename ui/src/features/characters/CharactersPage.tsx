@@ -126,7 +126,7 @@ export function CharactersPage() {
     }
   };
 
-  const useInStudio = (id: string) => {
+  const pickForStudio = (id: string) => {
     setCharacter(id);
     setTier('studio');
     toast.success(t('characters.applied', { defaultValue: 'Character applied to Studio.' }));
@@ -297,7 +297,7 @@ export function CharactersPage() {
                       size="sm"
                       variant={currentCharacter === c.id ? 'secondary' : 'gradient'}
                       className="flex-1"
-                      onClick={() => useInStudio(c.id)}
+                      onClick={() => pickForStudio(c.id)}
                     >
                       {currentCharacter === c.id ? 'In use' : 'Use'}
                     </Button>

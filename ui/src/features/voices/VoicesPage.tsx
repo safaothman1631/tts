@@ -17,6 +17,7 @@ import { isBackendReady } from '@/lib/backend-status';
 import { synthesize } from '@/api/endpoints';
 import { BackendStatusNotice } from '@/components/common/BackendStatusNotice';
 import { HelpHint } from '@/components/common/HelpHint';
+import { SampleTextPicker } from '@/components/common/SampleTextPicker';
 import { toast } from 'sonner';
 
 export function VoicesPage() {
@@ -35,7 +36,9 @@ export function VoicesPage() {
   const [previewLoadingId, setPreviewLoadingId] = useState<string | null>(null);
   const [previewingId, setPreviewingId] = useState<string | null>(null);
 
-  const previewText = 'Hello, this is a quick sample of this voice in TTS Studio.';
+  const [previewText, setPreviewText] = useState(
+    'Hello, this is a quick sample of this voice in TTS Studio.',
+  );
 
   const filtered = useMemo(() => {
     return (data ?? []).filter((v) => {
@@ -159,6 +162,12 @@ export function VoicesPage() {
           </SelectContent>
         </Select>
       </div>
+
+      <SampleTextPicker
+        label="Preview text"
+        onPick={(s) => setPreviewText(s.text)}
+        disabled={previewLoadingId !== null}
+      />
 
       {!backendReady && (
         <BackendStatusNotice message={t('voices.backendOfflinePreviewMessage')} />

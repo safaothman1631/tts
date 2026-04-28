@@ -22,6 +22,7 @@ import { audioExtensionFromBlob, downloadBlob } from '@/lib/utils';
 import { isBackendReady } from '@/lib/backend-status';
 import { useState } from 'react';
 import type { SynthSegment, Voice } from '@/types/api';
+import { SampleTextPicker } from '@/components/common/SampleTextPicker';
 
 const DEFAULT_VOICE_VALUE = '__default_voice__';
 const INHERIT_VOICE_VALUE = '__inherit_voice__';
@@ -150,13 +151,19 @@ export function StudioPage() {
                   onUpdate={studio.updateSegment}
                 />
               ) : (
-                <Textarea
-                  value={studio.text}
-                  onChange={(e) => studio.setText(e.target.value)}
-                  placeholder={t('studio.placeholder')}
-                  className="min-h-[280px] font-mono text-sm"
-                  aria-label="TTS input"
-                />
+                <>
+                  <SampleTextPicker
+                    onPick={(s) => studio.setText(s.text)}
+                    disabled={synth.isPending}
+                  />
+                  <Textarea
+                    value={studio.text}
+                    onChange={(e) => studio.setText(e.target.value)}
+                    placeholder={t('studio.placeholder')}
+                    className="min-h-[280px] font-mono text-sm"
+                    aria-label="TTS input"
+                  />
+                </>
               )}
               <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
                 <div className="flex gap-2">
