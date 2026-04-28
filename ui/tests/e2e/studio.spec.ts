@@ -58,8 +58,11 @@ test('degraded mode disables preview in Voices', async ({ page }) => {
   });
 
   await page.goto('/voices');
-  await expect(page.getByText('Demo Voice')).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Preview', exact: true })).toBeDisabled();
+  // Scope to the voice card to avoid collisions with HelpHint tooltips that
+  // mention the word "Preview" in their aria-label.
+  const card = page.locator('article, [class*="card"]').filter({ hasText: 'Demo Voice' }).first();
+  await expect(card.getByText('Demo Voice')).toBeVisible();
+  await expect(card.getByRole('button', { name: 'Preview', exact: true })).toBeDisabled();
 });
 
 test('VoiceLab route remains accessible when backend is down', async ({ page }) => {
