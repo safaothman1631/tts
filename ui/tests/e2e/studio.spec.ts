@@ -59,7 +59,7 @@ test('degraded mode disables preview in Voices', async ({ page }) => {
 
   await page.goto('/voices');
   await expect(page.getByText('Demo Voice')).toBeVisible();
-  await expect(page.getByRole('button', { name: /preview/i })).toBeDisabled();
+  await expect(page.getByRole('button', { name: 'Preview', exact: true })).toBeDisabled();
 });
 
 test('VoiceLab route remains accessible when backend is down', async ({ page }) => {
