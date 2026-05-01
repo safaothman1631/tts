@@ -44,7 +44,7 @@ if not exist "%APP_DIR%\node_modules\" (
   if errorlevel 1 ( echo Dependency install failed. & pause & exit /b 1 )
 )
 
-rem ── Backend ─────────────────────────────────────────────────────────────
+rem Backend
 curl -sf -o NUL --connect-timeout 2 --max-time 3 "%API_URL%/v1/health" >nul 2>nul
 if errorlevel 1 (
   echo Starting backend API in new window...
@@ -72,32 +72,31 @@ if errorlevel 1 (
   echo Backend already running: %API_URL%
 )
 
-rem ── Frontend ────────────────────────────────────────────────────────────
-curl -sf -o NUL --connect-timeout 2 --max-time 3 "%UI_URL%" >nul 2>nul
-if errorlevel 1 (
-  echo Starting frontend UI in new window...
-  start "TTS Studio UI" /D "%APP_DIR%" cmd /k "set VITE_API_URL=%API_URL%&& pnpm run dev -- --host 127.0.0.1 --port %UI_PORT%"
-  echo Waiting for UI to be ready
-  set "UI_READY=0"
-  for /L %%I in (1,1,45) do (
-    if "!UI_READY!"=="0" (
-      curl -sf -o NUL --connect-timeout 1 --max-time 2 "%UI_URL%" >nul 2>nul
-      if not errorlevel 1 (
-        set "UI_READY=1"
-        echo  [OK] UI ready ^(%%I s^)
-      ) else (
-        <nul set /p ".=."
-        timeout /t 1 /nobreak >nul
-      )
+rem Frontend
+for /f "tokens=5" %%P in ('netstat -ano ^| findstr ":%UI_PORT%" ^| findstr "LISTENING"') do (
+  echo Restarting existing frontend UI on port %UI_PORT% ^(PID %%P^) ...
+  taskkill /PID %%P /F >nul 2>nul
+)
+echo Starting frontend UI in new window...
+start "TTS Studio UI" /D "%APP_DIR%" cmd /k "set VITE_API_URL=& pnpm run dev -- --host 127.0.0.1 --port %UI_PORT%"
+echo Waiting for UI to be ready
+set "UI_READY=0"
+for /L %%I in (1,1,45) do (
+  if "!UI_READY!"=="0" (
+    curl -sf -o NUL --connect-timeout 1 --max-time 2 "%UI_URL%" >nul 2>nul
+    if not errorlevel 1 (
+      set "UI_READY=1"
+      echo  [OK] UI ready ^(%%I s^)
+    ) else (
+      <nul set /p ".=."
+      timeout /t 1 /nobreak >nul
     )
   )
-  if "!UI_READY!"=="0" (
-    echo.
-    echo  UI did not start in time. Check the TTS Studio UI window.
-    pause & exit /b 1
-  )
-) else (
-  echo Frontend already running: %UI_URL%
+)
+if "!UI_READY!"=="0" (
+  echo.
+  echo  UI did not start in time. Check the TTS Studio UI window.
+  pause & exit /b 1
 )
 
 echo.
