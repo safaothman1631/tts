@@ -1,25 +1,46 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Trash2, Play, Download, FileDown } from 'lucide-react';
+import { Trash2, Play, Pause, Download, FileDown } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useHistoryStore } from '@/stores/history';
 import { audioExtensionFromBlob, downloadBlob, formatDuration, truncate } from '@/lib/utils';
-import { useStudioStore } from '@/stores/studio';
+
+async function blobToDataUrl(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result ?? ''));
+    reader.onerror = () => reject(new Error('Could not read audio blob.'));
+    reader.readAsDataURL(blob);
+  });
+}
 
 export function HistoryPage() {
   const { t } = useTranslation();
   const { items, load, remove, clear } = useHistoryStore();
-  const setText = useStudioStore((s) => s.setText);
-  const setAudio = useStudioStore((s) => s.setAudio);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [playingId, setPlayingId] = useState<string | null>(null);
 
   useEffect(() => { void load(); }, [load]);
 
-  const replay = (id: string) => {
+  const togglePlay = async (id: string) => {
     const item = items.find((i) => i.id === id);
-    if (!item) return;
-    setText(item.text);
-    if (item.audioBlob) setAudio(undefined, item.durationSeconds, item.audioBlob);
+    if (!item?.audioBlob) return;
+
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (playingId === id) {
+      audio.pause();
+      setPlayingId(null);
+      return;
+    }
+
+    audio.pause();
+    const dataUrl = await blobToDataUrl(item.audioBlob);
+    audio.src = dataUrl;
+    await audio.play();
+    setPlayingId(id);
   };
 
   const dl = (id: string) => {
@@ -51,6 +72,13 @@ export function HistoryPage() {
 
   return (
     <div className="container mx-auto max-w-4xl space-y-4 p-6">
+      <audio
+        ref={audioRef}
+        onEnded={() => setPlayingId(null)}
+        onPause={() => setPlayingId(null)}
+        preload="none"
+        className="hidden"
+      />
       <header className="flex items-center justify-between">
         <h1 className="text-2xl font-bold tracking-tight">{t('history.title')}</h1>
         {items.length > 0 && (
@@ -84,8 +112,8 @@ export function HistoryPage() {
                   </div>
                 </div>
                 <div className="flex gap-1">
-                  <Button size="icon" variant="ghost" onClick={() => replay(item.id)} aria-label="Replay">
-                    <Play className="h-4 w-4" />
+                  <Button size="icon" variant="ghost" onClick={() => void togglePlay(item.id)} aria-label={playingId === item.id ? 'Pause' : 'Play'} disabled={!item.audioBlob}>
+                    {playingId === item.id ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
                   </Button>
                   <Button size="icon" variant="ghost" onClick={() => dl(item.id)} aria-label="Download" disabled={!item.audioBlob}>
                     <Download className="h-4 w-4" />

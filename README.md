@@ -8,6 +8,15 @@ tts/
 └── kurdish/   ← Kurdish TTS apps, training scripts, datasets, docs
 ```
 
+## One-Click Local Start
+
+On Windows, double-click [start.bat](start.bat) from the project root. It starts
+the eng-tts API on `http://127.0.0.1:8765`, starts the React UI on
+`http://127.0.0.1:5173`, reuses either service if it is already running, and
+opens the UI in your browser.
+
+Keep the API and UI terminal windows open while using TTS Studio.
+
 ## English — `english/`
 
 A modular, plugin-driven, production-grade English TTS engine.

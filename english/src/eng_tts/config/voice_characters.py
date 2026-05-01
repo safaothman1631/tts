@@ -1,15 +1,13 @@
-"""Curated catalog of ~100 handcrafted voice characters.
+"""Curated catalog of the real Qwen3 voice originals.
 
-Replaces the procedural 1480-entry catalog with a smaller, audibly distinct
-set. Each character pairs a Qwen3 named speaker with a *unique* timbre-rich
-style prompt and per-voice pitch/speed offsets so two characters never sound
-identical even when they share a base speaker.
+The 0.6B CustomVoice checkpoint currently exposes nine named speakers. This
+catalog keeps exactly one character per real speaker, with no aliases and no
+DSP pitch/time tricks. Distinctness comes from the actual speaker id plus a
+unique style prompt, default emotion, category, language, and metadata.
 
-Characters are organised into 10 categories (narrator, audiobook, news,
-cinematic, animated, podcast, commercial, wellness, multilingual,
-educational). Voice-cloned characters reference WAV files in
-``voices/reference_assets/`` (drop LibriVox / Common Voice CC-0 clips there;
-characters fall back to their base speaker until a clip is registered).
+Voice-cloned characters can reference WAV files in ``voices/reference_assets/``
+(drop LibriVox / Common Voice CC-0 clips there; characters fall back to their
+base speaker until a clip is registered).
 
 Naming follows a copyright-safe descriptor convention - no real celebrity
 names. ``inspiration_note`` is for editorial flavour only.
@@ -186,50 +184,59 @@ def _make(
 # fmt: off
 _HANDCRAFTED: tuple[VoiceCharacter, ...] = (
     _make("qwen-aiden", "Aiden", "Qwen3 original - American male",
-          speaker="aiden", style="Natural American English male voice.",
-          emotion="neutral", category="narrator", language="en-US",
+        speaker="aiden",
+        style="Crisp American newsroom baritone with confident projection, clean consonants, brisk controlled pacing and a firm finish on important facts.",
+        emotion="confident", category="news", subcategory="anchor", language="en-US",
           qwen_language="English", region="American English", accent="American",
-          gender="male", age="adult", tags=("qwen3","original","english")),
+        gender="male", age="adult", tags=("qwen3","original","english","anchor")),
     _make("qwen-ryan", "Ryan", "Qwen3 original - American male",
-          speaker="ryan", style="Natural American English male voice.",
-          emotion="neutral", category="narrator", language="en-US",
+        speaker="ryan",
+        style="Clear American documentary narrator with steady mid-range pitch, balanced warmth, patient pacing and transparent articulation for long-form explanations.",
+        emotion="neutral", category="narrator", subcategory="documentary", language="en-US",
           qwen_language="English", region="American English", accent="American",
-          gender="male", age="adult", tags=("qwen3","original","english")),
+        gender="male", age="adult", tags=("qwen3","original","english","documentary")),
     _make("qwen-vivian", "Vivian", "Qwen3 original - Mandarin Chinese female",
-          speaker="vivian", style="Natural Mandarin Chinese female voice.",
-          emotion="neutral", category="narrator", language="zh-CN",
+        speaker="vivian",
+        style="Bright Mandarin educational guide with friendly lift, precise vowels, gentle smiles in the delivery and a welcoming tutorial pace.",
+        emotion="friendly", category="educational", subcategory="tutor", language="zh-CN",
           qwen_language="Chinese", region="Mandarin Chinese", accent="Mandarin",
-          gender="female", age="adult", tags=("qwen3","original","chinese")),
+        gender="female", age="adult", tags=("qwen3","original","chinese","tutor")),
     _make("qwen-serena", "Serena", "Qwen3 original - Mandarin Chinese female",
-          speaker="serena", style="Natural Mandarin Chinese female voice.",
-          emotion="neutral", category="narrator", language="zh-CN",
+        speaker="serena",
+        style="Soft Mandarin wellness narrator with calm breath, rounded vowels, low-energy pauses and a smooth cadence for reflective passages.",
+        emotion="calm", category="wellness", subcategory="meditation", language="zh-CN",
           qwen_language="Chinese", region="Mandarin Chinese", accent="Mandarin",
-          gender="female", age="adult", tags=("qwen3","original","chinese")),
+        gender="female", age="adult", tags=("qwen3","original","chinese","wellness")),
     _make("qwen-uncle-fu", "Uncle Fu", "Qwen3 original - Mandarin Chinese male",
-          speaker="uncle_fu", style="Natural Mandarin Chinese mature male voice.",
-          emotion="neutral", category="narrator", language="zh-CN",
+        speaker="uncle_fu",
+        style="Mature Mandarin storyteller with grounded resonance, deliberate pacing, wise emphasis and unhurried phrasing for classic tales.",
+        emotion="serious", category="audiobook", subcategory="classic-story", language="zh-CN",
           qwen_language="Chinese", region="Mandarin Chinese", accent="Mandarin",
-          gender="male", age="senior", tags=("qwen3","original","chinese")),
+        gender="male", age="senior", tags=("qwen3","original","chinese","storyteller")),
     _make("qwen-eric", "Eric", "Qwen3 original - Sichuan dialect male",
-          speaker="eric", style="Natural Sichuan dialect Chinese male voice.",
-          emotion="neutral", category="narrator", language="zh-CN",
+        speaker="eric",
+        style="Lively Sichuan podcast host with playful energy, nimble timing, expressive turns and an upbeat conversational rhythm.",
+        emotion="excited", category="podcast", subcategory="creator", language="zh-CN",
           qwen_language="Chinese", region="Sichuan Chinese", accent="Sichuan",
-          gender="male", age="adult", tags=("qwen3","original","chinese","dialect")),
+        gender="male", age="adult", tags=("qwen3","original","chinese","dialect","podcast")),
     _make("qwen-dylan", "Dylan", "Qwen3 original - Beijing dialect male",
-          speaker="dylan", style="Natural Beijing dialect Chinese male voice.",
-          emotion="neutral", category="narrator", language="zh-CN",
+        speaker="dylan",
+        style="Animated Beijing character voice with quick reactions, elastic emphasis, theatrical pauses and a dry mischievous edge.",
+        emotion="sarcastic", category="animated", subcategory="character", language="zh-CN",
           qwen_language="Chinese", region="Beijing Chinese", accent="Beijing",
-          gender="male", age="adult", tags=("qwen3","original","chinese","dialect")),
+        gender="male", age="adult", tags=("qwen3","original","chinese","dialect","animated")),
     _make("qwen-ono-anna", "Ono Anna", "Qwen3 original - Japanese female",
-          speaker="ono_anna", style="Natural Japanese female voice.",
-          emotion="neutral", category="narrator", language="ja-JP",
+        speaker="ono_anna",
+        style="Elegant Japanese brand voice with polished diction, graceful timing, soft confidence and a refined finish for product lines.",
+        emotion="romantic", category="commercial", subcategory="brand", language="ja-JP",
           qwen_language="Japanese", region="Japanese", accent="Japanese",
-          gender="female", age="adult", tags=("qwen3","original","japanese")),
+        gender="female", age="adult", tags=("qwen3","original","japanese","brand")),
     _make("qwen-sohee", "Sohee", "Qwen3 original - Korean female",
-          speaker="sohee", style="Natural Korean female voice.",
-          emotion="neutral", category="narrator", language="ko-KR",
+        speaker="sohee",
+        style="Cinematic Korean narrator with focused intensity, spacious pauses, rising suspense and clean emotional control.",
+        emotion="serious", category="cinematic", subcategory="trailer", language="ko-KR",
           qwen_language="Korean", region="Korean", accent="Korean",
-          gender="female", age="adult", tags=("qwen3","original","korean")),
+        gender="female", age="adult", tags=("qwen3","original","korean","cinematic")),
 )
 # fmt: on
 
@@ -336,9 +343,11 @@ def filter_characters(
 
 
 def list_personas() -> list[dict]:
+    used = {c.category for c in all_characters()}
     return [
         {"id": p.id, "label": p.label, "style_prompt": "", "default_emotion": "neutral", "tags": list(p.tags)}
         for p in PERSONAS
+        if p.id in used
     ]
 
 
@@ -347,7 +356,8 @@ def list_languages() -> list[dict]:
 
 
 def list_categories() -> list[dict]:
-    return [{"id": cid, "label": label} for cid, label in CATEGORIES]
+    used = {c.category for c in all_characters()}
+    return [{"id": cid, "label": label} for cid, label in CATEGORIES if cid in used]
 
 
 __all__ = [

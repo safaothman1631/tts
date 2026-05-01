@@ -50,7 +50,7 @@ const studioControls = [
   { name: 'Volume', detail: 'Output gain. Values above 100% can clip; the backend applies loudness normalization unless disabled.' },
   { name: 'Style preset', detail: 'Predefined Qwen3 narration styles (Audiobook, Newscaster…). Selecting one fills the Style prompt below.' },
   { name: 'Style prompt', detail: 'Free-form description of how the voice should sound. Sent verbatim to Qwen3 as an instruction.' },
-  { name: 'Speaker preset', detail: 'Named Qwen3 speaker (Ryan, Aiden, Lily…). Overrides the default speaker for the chosen voice.' },
+  { name: 'Speaker preset', detail: 'Real Qwen3 speaker original (Aiden, Ryan, Vivian…). Overrides the default speaker for the chosen voice.' },
   { name: 'Emotion', detail: 'Emotional tone hint (happy, sad, calm…) blended into the Qwen3 instruction prompt.' },
   { name: 'Segments', detail: 'Split text into multiple paragraphs, each with its own voice/tier/speed and pause.' },
   { name: 'Stream', detail: 'Receive audio chunks as soon as they are produced. Lower first-byte latency, same final size.' },

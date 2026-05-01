@@ -44,6 +44,13 @@ const LANGUAGE_OPTIONS = [
   { value: 'ru', label: 'Русский' },
 ];
 
+function formatSpeakerLabel(value: string): string {
+  return value
+    .split('_')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
 export function StudioPage() {
   const { t } = useTranslation();
   const studio = useStudioStore();
@@ -201,7 +208,7 @@ export function StudioPage() {
                       <ArrowLeftRight className="h-4 w-4" /> A/B
                     </Button>
                   )}
-                  {studio.currentAudioUrl && (
+                  {(studio.currentAudioUrl || studio.currentAudioBlob) && (
                     <Button type="button" size="sm" variant="ghost" onClick={onDownload}>
                       <Download className="h-4 w-4" /> {t('actions.download')}
                     </Button>
@@ -406,7 +413,7 @@ export function StudioPage() {
 
                 <Field
                   label="Speaker preset"
-                  hint="Named Qwen3 speaker (Ryan, Aiden, Lily…). Overrides the default speaker for the chosen voice."
+                  hint="Real Qwen3 speaker original (Aiden, Ryan, Vivian…). Overrides the default speaker for the chosen voice."
                 >
                   <Select
                     value={studio.qwenSpeaker ?? NONE_VALUE}
@@ -416,7 +423,7 @@ export function StudioPage() {
                     <SelectContent>
                       <SelectItem value={NONE_VALUE}>Auto</SelectItem>
                       {(capabilities.data?.qwen_speakers ?? []).map((s) => (
-                        <SelectItem key={s} value={s}>{s}</SelectItem>
+                        <SelectItem key={s} value={s}>{formatSpeakerLabel(s)}</SelectItem>
                       ))}
                     </SelectContent>
                   </Select>

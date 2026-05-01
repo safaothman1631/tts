@@ -26,6 +26,7 @@ A modern, accessible, fully self-hosted React UI for the
 | -------------- | ------------------- |
 | `/`            | Studio (text → audio, controls, player) |
 | `/voices`      | Voice library (search, filters, grid)   |
+| `/characters`  | Distinct Qwen3 original speaker catalog |
 | `/voice-lab`   | 5-step voice cloning wizard             |
 | `/projects`    | Long-form project workspace             |
 | `/analyzer`    | NLP analyzer (tokens, phonemes, prosody)|

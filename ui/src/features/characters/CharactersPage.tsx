@@ -32,6 +32,7 @@ export function CharactersPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const audioRef = useRef<HTMLAudioElement>(null);
+  const previewUrlRef = useRef<string | null>(null);
 
   const [q, setQ] = useState('');
   const [language, setLanguage] = useState<string>('all');
@@ -79,6 +80,13 @@ export function CharactersPage() {
       .catch(() => undefined);
   }, []);
 
+  useEffect(() => () => {
+    if (previewUrlRef.current) {
+      URL.revokeObjectURL(previewUrlRef.current);
+      previewUrlRef.current = null;
+    }
+  }, []);
+
   const languageOptions = useMemo(() => {
     const set = new Set<string>();
     (data?.items ?? []).forEach((c) => set.add(c.language));
@@ -89,6 +97,12 @@ export function CharactersPage() {
     if (!audioRef.current) return;
     audioRef.current.pause();
     audioRef.current.currentTime = 0;
+    audioRef.current.removeAttribute('src');
+    audioRef.current.load();
+    if (previewUrlRef.current) {
+      URL.revokeObjectURL(previewUrlRef.current);
+      previewUrlRef.current = null;
+    }
     setPreviewing(null);
   };
 
@@ -113,11 +127,17 @@ export function CharactersPage() {
       audioRef.current.pause();
       audioRef.current.removeAttribute('src');
       audioRef.current.load();
+      if (previewUrlRef.current) {
+        URL.revokeObjectURL(previewUrlRef.current);
+        previewUrlRef.current = null;
+      }
       const url = URL.createObjectURL(blob);
+      previewUrlRef.current = url;
       audioRef.current.src = url;
       await audioRef.current.play();
       setPreviewing(id);
     } catch (error) {
+      stopPreview();
       const message = error instanceof Error ? error.message : 'Could not preview this character.';
       toast.error(message);
       setPreviewing(null);
@@ -135,12 +155,20 @@ export function CharactersPage() {
 
   const total = data?.total ?? 0;
   const pageCount = Math.max(1, Math.ceil(total / limit));
+  const subtitle = backendReady
+    ? t('characters.subtitle', {
+        defaultValue: '{{count}} distinct Qwen3 originals · no duplicate speaker aliases',
+        count: caps.data?.voice_characters_total ?? total,
+      })
+    : t('characters.subtitleOffline', {
+        defaultValue: 'Distinct Qwen3 originals load when the backend is online.',
+      });
 
   return (
     <div className="container mx-auto max-w-7xl space-y-6 p-6">
       <audio
         ref={audioRef}
-        onEnded={() => setPreviewing(null)}
+        onEnded={stopPreview}
         controlsList="nodownload noremoteplayback"
         preload="none"
         className="hidden"
@@ -151,13 +179,10 @@ export function CharactersPage() {
           <h1 className="flex items-center gap-2 text-2xl font-bold tracking-tight">
             <Globe2 className="h-6 w-6 text-primary" />
             {t('characters.title', { defaultValue: 'Voice characters' })}
-            <HelpHint text="Pick from over a thousand globally-curated voice characters spanning many languages, regions, genders and personas. Selecting a character fills in the right Qwen3 speaker, language, style preset and emotion in one click — you can still tweak any of those in Studio." />
+            <HelpHint text="Pick from the real Qwen3 speaker originals, each with distinct speaker, language, category, style and emotion metadata. Selecting a character fills Studio controls in one click; you can still tweak them." />
           </h1>
           <p className="text-sm text-muted-foreground">
-            {t('characters.subtitle', {
-              defaultValue: '{{count}} curated characters · powered by Qwen3 voice design',
-              count: caps.data?.voice_characters_total ?? total,
-            })}
+            {subtitle}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">

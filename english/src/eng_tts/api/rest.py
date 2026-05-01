@@ -47,11 +47,10 @@ import soundfile as sf
 
 app = FastAPI(title="eng-tts", version=__version__)
 
-# Built-in Qwen3 named speaker presets and Studio style suggestions.
-QWEN3_SPEAKERS: list[str] = [
-    "Ryan", "Aiden", "Ethan", "Lily", "Ava", "Sophia",
-    "Olivia", "Mia", "Emma", "Noah", "Liam", "Lucas",
-]
+# Built-in Qwen3 named speaker presets and Studio style suggestions. Keep the
+# speaker list in lockstep with the originals-only character catalog so the UI
+# never exposes aliases or unsupported speakers.
+QWEN3_SPEAKERS: list[str] = [c.speaker_id for c in all_characters()]
 EMOTIONS: list[str] = [
     "neutral", "happy", "sad", "angry", "excited", "calm",
     "serious", "friendly", "whisper", "confident", "sarcastic", "romantic",

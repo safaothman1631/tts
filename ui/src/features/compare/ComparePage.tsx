@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Loader2, Plus, Play, X, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
@@ -40,9 +40,15 @@ export function ComparePage() {
     { voiceId: null, url: null, loading: false },
     { voiceId: null, url: null, loading: false },
   ]);
+  const slotsRef = useRef(slots);
 
-  // Revoke object URLs on unmount.
-  useEffect(() => () => slots.forEach((s) => { if (s?.url) URL.revokeObjectURL(s.url); }), [slots]);
+  useEffect(() => {
+    slotsRef.current = slots;
+  }, [slots]);
+
+  useEffect(() => () => {
+    slotsRef.current.forEach((s) => { if (s?.url) URL.revokeObjectURL(s.url); });
+  }, []);
 
   const updateSlot = (i: number, patch: Partial<Slot>) =>
     setSlots((curr) => curr.map((s, idx) => (idx === i ? { ...s, ...patch } : s)));

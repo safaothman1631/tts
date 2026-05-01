@@ -30,16 +30,29 @@ def test_character_ids_are_unique() -> None:
 
 
 def test_category_coverage() -> None:
-    # In the originals-only catalog every entry uses the 'narrator' category;
-    # other declared categories may be empty - that is intentional.
     cats_in_catalog = {c.category for c in all_characters()}
-    assert cats_in_catalog, "catalog has no categories"
+    listed_categories = {row["id"] for row in list_categories()}
+    assert len(cats_in_catalog) >= 6, "catalog should expose distinct voice roles"
+    assert listed_categories == cats_in_catalog, "do not expose empty voice categories"
 
 
 def test_character_signatures_are_distinct() -> None:
     """Every character must map to a unique Qwen3 speaker - no aliasing."""
     speakers = [c.speaker_id for c in all_characters()]
     assert len(speakers) == len(set(speakers)), "two characters share a speaker_id"
+
+
+def test_character_metadata_is_distinct() -> None:
+    chars = all_characters()
+    styles = [c.style_prompt for c in chars]
+    names = [c.name for c in chars]
+    signatures = [
+        (c.speaker_id, c.style_prompt, c.default_emotion, c.category, c.accent)
+        for c in chars
+    ]
+    assert len(styles) == len(set(styles)), "two characters share the same style prompt"
+    assert len(names) == len(set(names)), "two characters share the same display name"
+    assert len(signatures) == len(set(signatures)), "two characters share a voice signature"
 
 
 def test_get_character_round_trip() -> None:
